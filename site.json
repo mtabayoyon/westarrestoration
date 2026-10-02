@@ -1,0 +1,274 @@
+{
+  "_README": "Edit this file, then run: python _build/build.py   Values marked REPLACE must be filled before launch.",
+  "business": {
+    "name": "Westar Restoration",
+    "legal_name": "REPLACE: legal entity or DBA (e.g. Westar Restoration, a DBA of ...)",
+    "domain": "https://westarrestoration.com",
+    "phone_display": "(000) 000-0000",
+    "phone_e164": "+10000000000",
+    "email": "REPLACE@westarrestoration.com",
+    "street": "",
+    "city": "",
+    "region": "CA",
+    "postal": "",
+    "license": "",
+    "certifications": [],
+    "form_action": "",
+    "ga4_id": ""
+  },
+  "cities": [
+    {
+      "slug": "san-francisco",
+      "name": "San Francisco",
+      "county": "San Francisco County",
+      "note": "Victorian flats, older galvanized supply lines, and shared walls mean one leak often becomes two units' problem."
+    },
+    {
+      "slug": "petaluma",
+      "name": "Petaluma",
+      "county": "Sonoma County",
+      "note": "Winter storms and river-adjacent neighborhoods put crawlspaces and lower floors at risk of standing water."
+    },
+    {
+      "slug": "walnut-creek",
+      "name": "Walnut Creek",
+      "county": "Contra Costa County",
+      "note": "Slab homes and condo complexes see most losses from failed water heaters, supply lines, and slab leaks."
+    },
+    {
+      "slug": "san-jose",
+      "name": "San Jose",
+      "county": "Santa Clara County",
+      "note": "From downtown high-rises to hillside homes, we handle burst pipes, appliance leaks, and smoke from nearby fires."
+    }
+  ],
+  "services": [
+    {
+      "slug": "water-damage",
+      "name": "Water damage restoration",
+      "short": "Water",
+      "summary": "Burst pipes, appliance leaks, and flooding. We extract the water, dry the structure, and prove it's dry before anything gets closed up.",
+      "now": [
+        "Shut off the main water valve if the source is a pipe or appliance.",
+        "Turn off power to wet rooms at the breaker if it's safe to reach.",
+        "Move furniture, rugs, and electronics off wet floors.",
+        "Photograph everything before you clean up."
+      ],
+      "steps": [
+        [
+          "Inspect and map",
+          "We find every wet area with moisture meters and thermal imaging, including inside walls and under flooring."
+        ],
+        [
+          "Extract",
+          "Truck-mounted and portable extractors pull standing water out of floors and carpet."
+        ],
+        [
+          "Dry and monitor",
+          "Dehumidifiers and air movers run while we take daily readings until materials reach dry standard."
+        ],
+        [
+          "Document",
+          "Photos, moisture logs, and a written scope for your insurance claim."
+        ]
+      ],
+      "faqs": [
+        [
+          "How long does drying take?",
+          "Most structures dry in 3 to 5 days. Hardwood, plaster, and saturated subfloors can take longer; daily readings tell us when it's done."
+        ],
+        [
+          "Does homeowners insurance cover water damage?",
+          "Sudden and accidental leaks are usually covered. Gradual leaks and outside flooding often aren't. Your policy decides, and we document the loss either way."
+        ],
+        [
+          "Do I need to move out?",
+          "Usually not. If the kitchen, only bathroom, or electrical is affected, your policy may pay for temporary housing."
+        ]
+      ]
+    },
+    {
+      "slug": "fire-smoke-damage",
+      "name": "Fire and smoke damage restoration",
+      "short": "Fire",
+      "summary": "Soot, smoke odor, and water from firefighting. We secure the property, clean or remove what's damaged, and get rid of the smell for good.",
+      "now": [
+        "Stay out until the fire department says the building is safe.",
+        "Don't wipe soot; it smears and sets into surfaces.",
+        "Don't turn on the HVAC; it spreads soot through the ducts.",
+        "Call your insurer to open a claim."
+      ],
+      "steps": [
+        [
+          "Secure",
+          "Board-up and roof tarping keep weather and intruders out."
+        ],
+        [
+          "Clean soot",
+          "Dry sponging, HEPA vacuuming, and surface-specific cleaners for walls, ceilings, and contents."
+        ],
+        [
+          "Remove odor",
+          "Thermal fogging, hydroxyl, or ozone treatment, depending on the materials."
+        ],
+        [
+          "Restore",
+          "Repair or rebuild damaged areas, or hand off to our reconstruction crew."
+        ]
+      ],
+      "faqs": [
+        [
+          "Can smoke smell really be removed?",
+          "Yes, when the source residue is cleaned and the odor is neutralized rather than masked. Porous items that can't be cleaned are documented for replacement."
+        ],
+        [
+          "What about wildfire smoke?",
+          "Smoke from nearby wildfires gets into attics, HVAC, and soft goods even without flames. It's cleaned the same way and is often covered."
+        ]
+      ]
+    },
+    {
+      "slug": "mold-remediation",
+      "name": "Mold remediation",
+      "short": "Mold",
+      "summary": "Visible growth or a musty smell. We contain the area, remove the mold, fix the moisture source, and clear the space for a post-test.",
+      "now": [
+        "Don't touch, scrub, or bleach it; that releases spores.",
+        "Keep the door to the affected room closed.",
+        "Stop the moisture source if you can find it.",
+        "Keep anyone with asthma or allergies away from the area."
+      ],
+      "steps": [
+        [
+          "Assess",
+          "Find the extent of growth and the moisture that's feeding it."
+        ],
+        [
+          "Contain",
+          "Plastic barriers and negative air pressure keep spores from spreading through the house."
+        ],
+        [
+          "Remove",
+          "Affected drywall, insulation, and materials come out; framing is cleaned and treated."
+        ],
+        [
+          "Verify",
+          "An independent post-remediation test confirms the area is clear."
+        ]
+      ],
+      "faqs": [
+        [
+          "Do I need a mold test first?",
+          "If growth is visible, testing isn't required to start. Testing helps when you smell mold but can't see it, and after remediation to confirm it's gone."
+        ],
+        [
+          "Is mold covered by insurance?",
+          "Mold from a covered water loss often is, up to a policy limit. Mold from long-term humidity usually isn't."
+        ]
+      ]
+    },
+    {
+      "slug": "sewage-cleanup",
+      "name": "Sewage cleanup",
+      "short": "Sewage",
+      "summary": "Toilet overflows and sewer backups. Category 3 water needs protective equipment, removal of porous materials, and disinfection.",
+      "now": [
+        "Keep people and pets away from the area.",
+        "Stop using toilets, sinks, and drains in the house.",
+        "Don't run fans; they spread contaminants.",
+        "Wash hands right away after any contact."
+      ],
+      "steps": [
+        [
+          "Protect",
+          "Crews in protective equipment set up containment."
+        ],
+        [
+          "Remove",
+          "Contaminated water and porous materials such as carpet, pad, and drywall come out."
+        ],
+        [
+          "Disinfect",
+          "Hard surfaces are cleaned and treated with antimicrobials."
+        ],
+        [
+          "Dry and restore",
+          "The area is dried and rebuilt once it's clean."
+        ]
+      ],
+      "faqs": [
+        [
+          "Can carpet be saved after a sewage backup?",
+          "No. Carpet and pad touched by sewage are removed. Hard surfaces can be cleaned and disinfected."
+        ],
+        [
+          "Who pays for a sewer backup?",
+          "Many policies exclude it unless you have a sewer backup endorsement. If the city main caused it, a claim with the city may apply."
+        ]
+      ]
+    },
+    {
+      "slug": "storm-damage",
+      "name": "Storm damage repair",
+      "short": "Storm",
+      "summary": "Wind, rain, and fallen trees. We tarp the roof, board openings, dry what got wet, and start the repairs.",
+      "now": [
+        "Stay clear of downed power lines and report them to PG&E.",
+        "Move valuables away from leaks and put buckets under drips.",
+        "Photograph the outside and inside damage.",
+        "Don't climb on the roof."
+      ],
+      "steps": [
+        [
+          "Make safe",
+          "Emergency roof tarping and board-up stop more water from getting in."
+        ],
+        [
+          "Extract and dry",
+          "Water that came through the roof or walls is removed and the structure is dried."
+        ],
+        [
+          "Document",
+          "Photos and a written scope for your claim."
+        ],
+        [
+          "Repair",
+          "Roofing, drywall, and finish repairs."
+        ]
+      ],
+      "faqs": [
+        [
+          "How fast can you tarp a roof?",
+          "Tarping is first priority on a storm call because it prevents additional damage, and most policies require you to take reasonable steps to stop it."
+        ]
+      ]
+    },
+    {
+      "slug": "reconstruction",
+      "name": "Reconstruction",
+      "short": "Rebuild",
+      "summary": "After the cleanup, the rebuild. Drywall, flooring, cabinets, and paint, so the same company finishes the job it started.",
+      "now": [],
+      "steps": [
+        [
+          "Scope",
+          "A line-item estimate that matches what your insurer approved."
+        ],
+        [
+          "Rebuild",
+          "Drywall, texture, paint, flooring, cabinets, and trim."
+        ],
+        [
+          "Walkthrough",
+          "We walk the finished work with you before we close out."
+        ]
+      ],
+      "faqs": [
+        [
+          "Can I use my own contractor for the rebuild?",
+          "Yes. You choose who rebuilds. We can hand off the documentation, or finish the job ourselves so there's one point of contact."
+        ]
+      ]
+    }
+  ]
+}

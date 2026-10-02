@@ -1,0 +1,24 @@
+<section class="band band-ink" id="estimate">
+  <div class="wrap two-col">
+    <div>
+      <h2>Not an emergency?</h2>
+      <p>Send the details and we'll call you back. For active water, fire, or sewage, call instead: <a href="tel:{{ b.phone_e164 }}">{{ b.phone_display }}</a>.</p>
+    </div>
+    {% if b.form_action %}
+    <form class="lead" action="{{ b.form_action }}" method="POST">
+      <label>Name<input name="name" autocomplete="name" required></label>
+      <label>Phone<input name="phone" type="tel" autocomplete="tel" required></label>
+      <label>City<input name="city" autocomplete="address-level2"></label>
+      <label>What happened?<textarea name="message" rows="4" required></textarea></label>
+      <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" class="hp" aria-hidden="true">
+      <button class="btn btn-call" type="submit">Request a callback</button>
+    </form>
+    {% else %}
+    <div class="lead lead-fallback">
+      <p>Call or email and we'll get back to you the same day.</p>
+      <a class="btn btn-call" href="tel:{{ b.phone_e164 }}">Call {{ b.phone_display }}</a>
+      <p><a href="mailto:{{ b.email }}">{{ b.email }}</a></p>
+    </div>
+    {% endif %}
+  </div>
+</section>

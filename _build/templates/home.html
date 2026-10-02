@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block main %}
+<section class="hero">
+  <div class="wrap hero-in">
+    <div class="hero-copy">
+      <h1>Something just went wrong at your property.</h1>
+      <p class="lede">Tell us what happened and we'll tell you what to do in the next ten minutes. Then call; a person answers 24 hours a day.</p>
+    </div>
+    <div class="triage" data-triage>
+      <p class="triage-q" id="triage-q">What's happening right now?</p>
+      <div class="triage-opts" role="group" aria-labelledby="triage-q">
+        {% for s in services if s.now %}<a class="triage-opt" href="/services/{{ s.slug }}/" data-key="{{ s.slug }}" aria-pressed="false"><span class="opt-icon" aria-hidden="true">{{ icons[s.slug]|safe }}</span>{{ s.short }}</a>
+        {% endfor %}
+      </div>
+      <div class="triage-out" aria-live="polite" hidden>
+        <p class="triage-out-h"></p>
+        <ol class="triage-steps"></ol>
+        <a class="btn btn-call btn-block" href="tel:{{ b.phone_e164 }}">Call {{ b.phone_display }}</a>
+        <a class="triage-more" href="#">How we handle it</a>
+      </div>
+    </div>
+  </div>
+</section>
+<script type="application/json" id="triage-data">{{ triage_json|safe }}</script>
+
+<section class="band">
+  <div class="wrap">
+    <h2>What we restore</h2>
+    <ul class="svc-list">
+      {% for s in services %}<li><a href="/services/{{ s.slug }}/"><span class="svc-name">{{ s.name }}</span><span class="svc-sum">{{ s.summary }}</span></a></li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+
+<section class="band band-mist">
+  <div class="wrap two-col">
+    <div>
+      <h2>How a job runs</h2>
+      <p>Every loss follows the same order, so you always know what's next.</p>
+    </div>
+    <ol class="process">
+      <li><strong>You call.</strong> We ask what happened, where, and whether it's still active, and give you steps to take before we arrive.</li>
+      <li><strong>We make it safe.</strong> Stop the source, extract water, tarp, board up, or contain, whichever the loss needs first.</li>
+      <li><strong>We dry and clean.</strong> Equipment runs and we log moisture readings until materials are back to normal.</li>
+      <li><strong>We document.</strong> Photos, readings, and a written scope your adjuster can work from.</li>
+      <li><strong>We rebuild, or hand off.</strong> Your choice of contractor for the repairs.</li>
+    </ol>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <h2>Where we work</h2>
+    <ul class="city-list">{% for c in cities %}<li><a href="/service-areas/{{ c.slug }}/">{{ c.name }}</a></li>{% endfor %}</ul>
+    <p class="muted">Not on the list? Call; we'll tell you straight away whether we can get to you.</p>
+  </div>
+</section>
+{% include "lead.html" %}
+{% endblock %}
