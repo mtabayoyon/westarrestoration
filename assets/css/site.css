@@ -79,6 +79,8 @@ p{margin:0 0 1em;max-width:65ch}
 .city-list{list-style:none;padding:0;margin:0 0 1rem;display:flex;flex-wrap:wrap;gap:.5rem}
 .city-list a{display:inline-block;padding:.55rem .95rem;border:1px solid var(--rule);border-radius:999px;text-decoration:none;font-weight:500;background:var(--paper)}
 .city-list a:hover{border-color:var(--ink)}
+.regions{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem 2rem;margin-bottom:1rem}
+.regions h3{font-size:1.35rem;margin-bottom:.6rem}
 .faqs details{border-bottom:1px solid var(--rule);padding:.85rem 0}
 .faqs summary{cursor:pointer;font-weight:600;color:var(--ink)}
 .faqs details p{margin:.6rem 0 0}
@@ -109,7 +111,7 @@ p{margin:0 0 1em;max-width:65ch}
 @media (max-width:860px){
   .nav{display:none}
   .masthead-call{margin-left:auto;padding:.7rem .9rem;font-size:.9rem}
-  .hero-in,.two-col,.foot-grid{grid-template-columns:1fr}
+  .hero-in,.two-col,.foot-grid,.regions{grid-template-columns:1fr}
   .hero{padding:2.25rem 0 2.75rem}
   .svc-list a{grid-template-columns:1fr;gap:.25rem}
   .two-col{gap:.75rem}

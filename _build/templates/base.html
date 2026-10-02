@@ -44,21 +44,21 @@
   <div class="wrap foot-grid">
     <div>
       <p class="foot-name">{{ b.name }}</p>
-      <p>Water, fire, mold, and storm damage restoration. Answering 24 hours a day, every day.</p>
+      <p>Water, fire, mold, and storm damage restoration across California. Answering 24 hours a day, every day.</p>
       <p><a href="tel:{{ b.phone_e164 }}">{{ b.phone_display }}</a><br><a href="mailto:{{ b.email }}">{{ b.email }}</a></p>
       {% if b.street %}<p>{{ b.street }}<br>{{ b.city }}, {{ b.region }} {{ b.postal }}</p>{% endif %}
-      {% if b.license %}<p>License {{ b.license }}</p>{% endif %}
+      {% if b.license %}<p>CA Contractor License #{{ b.license }}</p>{% endif %}
     </div>
     <div>
       <p class="foot-h">Services</p>
       <ul>{% for s in services %}<li><a href="/services/{{ s.slug }}/">{{ s.name }}</a></li>{% endfor %}</ul>
     </div>
     <div>
-      <p class="foot-h">Service areas</p>
-      <ul>{% for c in cities %}<li><a href="/service-areas/{{ c.slug }}/">{{ c.name }}</a></li>{% endfor %}</ul>
+      <p class="foot-h">Statewide across California</p>
+      <ul>{% for r, cs in regions %}{% for c in cs[:2] %}<li><a href="/service-areas/{{ c.slug }}/">{{ c.name }}</a></li>{% endfor %}{% endfor %}<li><a href="/service-areas/">All service areas</a></li></ul>
     </div>
   </div>
-  <div class="wrap foot-base"><p>&copy; {{ year }} {{ b.name }}. <a href="/privacy/">Privacy</a></p></div>
+  <div class="wrap foot-base"><p>&copy; {% if b.founded and b.founded|int < year %}{{ b.founded }}&ndash;{% endif %}{{ year }} {{ b.name }}. <a href="/privacy/">Privacy</a></p></div>
 </footer>
 <a class="callbar" href="tel:{{ b.phone_e164 }}">Call now, 24/7: {{ b.phone_display }}</a>
 <script src="/assets/js/site.js" defer></script>

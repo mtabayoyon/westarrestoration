@@ -22,16 +22,29 @@ year = datetime.date.today().year
 base_ctx = dict(b=b, cities=cities, services=services, placeholders=placeholders, year=year, icons=ICONS)
 pages = []
 
+def place(c):
+    return {"@type": "AdministrativeArea" if c["name"].endswith("County") else "City", "name": c["name"] + ", CA"}
+
+REGIONS = []
+for c in cities:
+    if c["region"] not in REGIONS: REGIONS.append(c["region"])
+base_ctx["regions"] = [(r, [c for c in cities if c["region"] == r]) for r in REGIONS]
+
 def biz_schema():
     s = {"@context": "https://schema.org", "@type": "HomeAndConstructionBusiness", "@id": b["domain"] + "/#business",
          "name": b["name"], "url": b["domain"] + "/", "telephone": b["phone_e164"], "email": b["email"],
          "openingHoursSpecification": {"@type": "OpeningHoursSpecification",
              "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"], "opens": "00:00", "closes": "23:59"},
-         "areaServed": [{"@type": "City", "name": c["name"] + ", CA"} for c in cities]}
+         "areaServed": [{"@type": "State", "name": "California"}] + [place(c) for c in cities]}
     if b["street"]:
         s["address"] = {"@type": "PostalAddress", "streetAddress": b["street"], "addressLocality": b["city"],
                         "addressRegion": b["region"], "postalCode": b["postal"], "addressCountry": "US"}
-    if "REPLACE" not in b["legal_name"]: s["legalName"] = b["legal_name"]
+    if b.get("founded"): s["foundingDate"] = b["founded"]
+    if b.get("license"):
+        s["hasCredential"] = {"@type": "EducationalOccupationalCredential", "credentialCategory": "license",
+            "name": "California Contractor License #" + b["license"],
+            "recognizedBy": {"@type": "GovernmentOrganization", "name": "Contractors State License Board", "url": "https://www.cslb.ca.gov/"}}
+    if b["legal_name"] and "REPLACE" not in b["legal_name"]: s["legalName"] = b["legal_name"]
     return s
 
 def crumbs_schema(crumbs):
@@ -51,7 +64,7 @@ HOME = ("Home", "/")
 # Home
 triage = {s["slug"]: {"name": s["name"], "now": s["now"], "url": f"/services/{s['slug']}/"} for s in services if s["now"]}
 render("home.html", "/", f"{b['name']} | 24/7 Water, Fire & Mold Damage Restoration",
-       "24/7 water, fire, mold, sewage, and storm damage restoration in " + ", ".join(c["name"] for c in cities) + ". Call now for emergency service.",
+       "24/7 water, fire, mold, sewage, and storm damage restoration across California, from San Diego to Redding. Call now for emergency service.",
        schemas=[biz_schema(), {"@context": "https://schema.org", "@type": "WebSite", "name": b["name"], "url": b["domain"] + "/"}],
        section="home", triage_json=json.dumps(triage).replace("</", "<\\/"))
 
@@ -59,7 +72,7 @@ render("home.html", "/", f"{b['name']} | 24/7 Water, Fire & Mold Damage Restorat
 for s in services:
     cr = [HOME, ("Services", "/services/"), (s["name"], f"/services/{s['slug']}/")]
     sch = [{"@context": "https://schema.org", "@type": "Service", "name": s["name"], "description": s["summary"],
-            "provider": {"@id": b["domain"] + "/#business"}, "areaServed": [c["name"] + ", CA" for c in cities]}]
+            "provider": {"@id": b["domain"] + "/#business"}, "areaServed": {"@type": "State", "name": "California"}}]
     if s["faqs"]:
         sch.append({"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
             {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in s["faqs"]]})
@@ -77,20 +90,21 @@ render("simple.html", "/services/", f"Restoration services | {b['name']}",
 for c in cities:
     cr = [HOME, ("Service areas", "/service-areas/"), (c["name"], f"/service-areas/{c['slug']}/")]
     sch = [{"@context": "https://schema.org", "@type": "Service", "name": f"Damage restoration in {c['name']}",
-            "provider": {"@id": b["domain"] + "/#business"}, "areaServed": {"@type": "City", "name": c["name"] + ", CA"}}]
+            "provider": {"@id": b["domain"] + "/#business"}, "areaServed": place(c)}]
     render("city.html", f"/service-areas/{c['slug']}/", f"Water & Fire Damage Restoration in {c['name']}, CA | {b['name']}",
            f"24/7 water, fire, mold, and storm damage restoration in {c['name']}, {c['county']}. Call {b['phone_display']}.",
-           schemas=sch, crumbs=cr, section="areas", city=c)
+           schemas=sch, crumbs=cr, section="areas", city=c, nearby=[x for x in cities if x["region"] == c["region"] and x is not c])
 
-area_body = '<ul class="city-list">' + "".join(f'<li><a href="/service-areas/{c["slug"]}/">{c["name"]}</a></li>' for c in cities) + \
-            "</ul><p>Outside these cities? Call and we'll tell you whether we can reach you.</p>"
-render("simple.html", "/service-areas/", f"Service areas | {b['name']}", "Cities we serve for emergency restoration.",
-       crumbs=[HOME, ("Service areas", "/service-areas/")], section="areas", h1="Service areas", lede="", body=area_body, show_lead=False)
+area_body = "<p>We cover all of California. These are the cities and counties with dedicated pages; if you're elsewhere in the state, call and we'll tell you how fast we can get there.</p>" + "".join(
+    f'<h2>{r}</h2><ul class="city-list">' + "".join(f'<li><a href="/service-areas/{c["slug"]}/">{c["name"]}</a></li>' for c in cs) + "</ul>"
+    for r, cs in base_ctx["regions"])
+render("simple.html", "/service-areas/", f"Service areas | {b['name']}", "Statewide California coverage for water, fire, mold, and storm damage restoration, with local pages for 24 cities and counties.",
+       crumbs=[HOME, ("Service areas", "/service-areas/")], section="areas", h1="Service areas", lede="Statewide across California, 24 hours a day.", body=area_body, show_lead=False)
 
 # About / contact / privacy / 404
 certs = "".join(f"<li>{x}</li>" for x in b["certifications"])
 about_body = (f"<p>{b['name']} handles the emergency and the rebuild: water extraction and drying, fire and smoke cleanup, mold remediation, "
-              "sewage cleanup, storm repairs, and reconstruction.</p><p>We document every job with photos and moisture readings so your "
+              "sewage cleanup, storm repairs, and reconstruction.</p>" + (f'<p>Licensed by the California Contractors State License Board, license #{b["license"]}.</p>' if b.get("license") else "") + "<p>We document every job with photos and moisture readings so your "
               "insurance claim has what it needs, and we explain each step before we take it.</p>"
               + (f"<h2>Certifications</h2><ul>{certs}</ul>" if certs else ""))
 render("simple.html", "/about/", f"About | {b['name']}", f"About {b['name']}, 24/7 damage restoration.",

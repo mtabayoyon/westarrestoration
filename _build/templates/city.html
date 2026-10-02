@@ -3,7 +3,7 @@
 <section class="page-head">
   <div class="wrap">
     <h1>Restoration in {{ city.name }}</h1>
-    <p class="lede">Water, fire, mold, sewage, and storm damage in {{ city.name }} and across {{ city.county }}. Answering 24 hours a day.</p>
+    <p class="lede">Water, fire, mold, sewage, and storm damage in {{ city.name }}{% if city.county != city.name %} and across {{ city.county }}{% endif %}. Answering 24 hours a day.</p>
     <a class="btn btn-call" href="tel:{{ b.phone_e164 }}">Call {{ b.phone_display }}, 24/7</a>
   </div>
 </section>
@@ -22,5 +22,13 @@
     </ul>
   </div>
 </section>
+{% if nearby %}
+<section class="band">
+  <div class="wrap">
+    <h2>Nearby in {{ city.region }}</h2>
+    <ul class="city-list">{% for c in nearby %}<li><a href="/service-areas/{{ c.slug }}/">{{ c.name }}</a></li>{% endfor %}</ul>
+  </div>
+</section>
+{% endif %}
 {% include "lead.html" %}
 {% endblock %}

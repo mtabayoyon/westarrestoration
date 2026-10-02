@@ -2,44 +2,190 @@
   "_README": "Edit this file, then run: python _build/build.py   Values marked REPLACE must be filled before launch.",
   "business": {
     "name": "Westar Restoration",
-    "legal_name": "REPLACE: legal entity or DBA (e.g. Westar Restoration, a DBA of ...)",
+    "legal_name": "",
     "domain": "https://westarrestoration.com",
-    "phone_display": "(000) 000-0000",
-    "phone_e164": "+10000000000",
-    "email": "REPLACE@westarrestoration.com",
+    "phone_display": "(619) 365-4550",
+    "phone_e164": "+16193654550",
+    "email": "info@westarrestoration.com",
     "street": "",
     "city": "",
     "region": "CA",
     "postal": "",
-    "license": "",
+    "license": "1007372",
     "certifications": [],
     "form_action": "",
-    "ga4_id": ""
+    "ga4_id": "",
+    "founded": "2014",
+    "coverage": "California"
   },
   "cities": [
+    {
+      "slug": "san-diego",
+      "name": "San Diego",
+      "county": "San Diego County",
+      "region": "Southern California",
+      "note": "Coastal humidity and older stucco homes make slow plumbing leaks and hidden mold a common call, along with condo water losses that spread between units."
+    },
+    {
+      "slug": "la-jolla",
+      "name": "La Jolla",
+      "county": "San Diego County",
+      "region": "Southern California",
+      "note": "Ocean-facing homes deal with salt air, wind-driven rain, and hillside drainage that can push water under slabs and into lower levels."
+    },
+    {
+      "slug": "chula-vista",
+      "name": "Chula Vista",
+      "county": "San Diego County",
+      "region": "Southern California",
+      "note": "Newer tract neighborhoods see most losses from failed water heaters, washing-machine hoses, and supply lines behind toilets and sinks."
+    },
+    {
+      "slug": "escondido",
+      "name": "Escondido",
+      "county": "San Diego County",
+      "region": "Southern California",
+      "note": "Inland heat and nearby brush fires bring smoke and ash cleanup, while older homes see pipe failures and roof leaks during winter storms."
+    },
+    {
+      "slug": "los-angeles",
+      "name": "Los Angeles",
+      "county": "Los Angeles County",
+      "region": "Southern California",
+      "note": "From hillside homes to high-rise condos, we handle burst pipes, sewer backups in older neighborhoods, and wildfire smoke that settles across the basin."
+    },
+    {
+      "slug": "long-beach",
+      "name": "Long Beach",
+      "county": "Los Angeles County",
+      "region": "Southern California",
+      "note": "Older coastal housing stock, cast-iron drain lines, and multi-unit buildings make sewage backups and unit-to-unit leaks frequent losses."
+    },
+    {
+      "slug": "orange-county",
+      "name": "Orange County",
+      "county": "Orange County",
+      "region": "Southern California",
+      "note": "Slab leaks, roof leaks during atmospheric-river storms, and smoke from Santa Ana wind fires drive most restoration work across the county."
+    },
+    {
+      "slug": "riverside",
+      "name": "Riverside",
+      "county": "Riverside County",
+      "region": "Southern California",
+      "note": "Summer heat strains AC condensate lines and water heaters, and wildfire season brings smoke and soot into homes across the Inland Empire."
+    },
+    {
+      "slug": "san-bernardino",
+      "name": "San Bernardino",
+      "county": "San Bernardino County",
+      "region": "Southern California",
+      "note": "Foothill neighborhoods face wildfire smoke and post-fire mudflow, while valley homes see plumbing and appliance water losses."
+    },
+    {
+      "slug": "palm-springs",
+      "name": "Palm Springs",
+      "county": "Riverside County",
+      "region": "Southern California",
+      "note": "Desert heat stresses plumbing and AC systems, and rare but heavy monsoon storms can overwhelm roofs and drainage built for dry weather."
+    },
+    {
+      "slug": "santa-barbara",
+      "name": "Santa Barbara",
+      "county": "Santa Barbara County",
+      "region": "Southern California",
+      "note": "Coastal moisture, older adobe and wood-frame homes, and wildfire and debris-flow risk in the foothills shape most losses here."
+    },
+    {
+      "slug": "ventura",
+      "name": "Ventura",
+      "county": "Ventura County",
+      "region": "Southern California",
+      "note": "Wind-driven fires, coastal storms, and older beach-area plumbing put both smoke cleanup and water extraction on the regular call list."
+    },
+    {
+      "slug": "bakersfield",
+      "name": "Bakersfield",
+      "county": "Kern County",
+      "region": "Central California",
+      "note": "Long hot summers mean overworked AC drain lines and water heaters, plus dust and smoke intrusion during fire season."
+    },
+    {
+      "slug": "fresno",
+      "name": "Fresno",
+      "county": "Fresno County",
+      "region": "Central California",
+      "note": "Valley heat, hard water that wears out plumbing fixtures, and winter fog that keeps crawlspaces damp drive water and mold work."
+    },
+    {
+      "slug": "sacramento",
+      "name": "Sacramento",
+      "county": "Sacramento County",
+      "region": "Central California",
+      "note": "River-adjacent neighborhoods and heavy winter storms bring flooding and crawlspace water, and summer fires bring smoke cleanup."
+    },
+    {
+      "slug": "stockton",
+      "name": "Stockton",
+      "county": "San Joaquin County",
+      "region": "Central California",
+      "note": "Delta-area flooding risk, older housing, and summer heat on plumbing systems keep water extraction and drying in steady demand."
+    },
+    {
+      "slug": "modesto",
+      "name": "Modesto",
+      "county": "Stanislaus County",
+      "region": "Central California",
+      "note": "Slab and crawlspace homes see pipe leaks and appliance failures, and seasonal smoke from valley and foothill fires."
+    },
     {
       "slug": "san-francisco",
       "name": "San Francisco",
       "county": "San Francisco County",
+      "region": "Northern California",
       "note": "Victorian flats, older galvanized supply lines, and shared walls mean one leak often becomes two units' problem."
     },
     {
-      "slug": "petaluma",
-      "name": "Petaluma",
-      "county": "Sonoma County",
-      "note": "Winter storms and river-adjacent neighborhoods put crawlspaces and lower floors at risk of standing water."
-    },
-    {
-      "slug": "walnut-creek",
-      "name": "Walnut Creek",
-      "county": "Contra Costa County",
-      "note": "Slab homes and condo complexes see most losses from failed water heaters, supply lines, and slab leaks."
+      "slug": "oakland",
+      "name": "Oakland",
+      "county": "Alameda County",
+      "region": "Northern California",
+      "note": "Hillside homes face wildfire smoke and runoff, while older flatland housing sees sewer lateral backups and plumbing failures."
     },
     {
       "slug": "san-jose",
       "name": "San Jose",
       "county": "Santa Clara County",
-      "note": "From downtown high-rises to hillside homes, we handle burst pipes, appliance leaks, and smoke from nearby fires."
+      "region": "Northern California",
+      "note": "From downtown high-rises to hillside homes, burst pipes, appliance leaks, and smoke from regional fires are the common calls."
+    },
+    {
+      "slug": "walnut-creek",
+      "name": "Walnut Creek",
+      "county": "Contra Costa County",
+      "region": "Northern California",
+      "note": "Slab homes and condo complexes see most losses from failed water heaters, supply lines, and slab leaks."
+    },
+    {
+      "slug": "santa-rosa",
+      "name": "Santa Rosa",
+      "county": "Sonoma County",
+      "region": "Northern California",
+      "note": "Wildfire smoke and soot, winter storm flooding, and crawlspace moisture make Santa Rosa a mix of fire and water work."
+    },
+    {
+      "slug": "petaluma",
+      "name": "Petaluma",
+      "county": "Sonoma County",
+      "region": "Northern California",
+      "note": "Winter storms and river-adjacent neighborhoods put crawlspaces and lower floors at risk of standing water."
+    },
+    {
+      "slug": "redding",
+      "name": "Redding",
+      "county": "Shasta County",
+      "region": "Northern California",
+      "note": "Extreme summer heat and wildfire smoke, plus heavy winter rain on older roofs, cover most restoration calls in the north state."
     }
   ],
   "services": [

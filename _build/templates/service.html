@@ -25,7 +25,7 @@
 <section class="band">
   <div class="wrap two-col">
     <h2>In {{ city.name }}</h2>
-    <p>{{ city.note }} We serve {{ city.name }} and the rest of {{ city.county }}.</p>
+    <p>{{ city.note }}</p>
   </div>
 </section>
 {% endif %}
@@ -40,8 +40,8 @@
 {% if not city %}
 <section class="band band-mist">
   <div class="wrap">
-    <h2>{{ s.name }} by city</h2>
-    <ul class="city-list">{% for c in cities %}<li><a href="/service-areas/{{ c.slug }}/">{{ c.name }}</a></li>{% endfor %}</ul>
+    <h2>{{ s.name }} across California</h2>
+    <div class="regions">{% for r, cs in regions %}<div><h3>{{ r }}</h3><ul class="city-list">{% for c in cs %}<li><a href="/service-areas/{{ c.slug }}/">{{ c.name }}</a></li>{% endfor %}</ul></div>{% endfor %}</div>
   </div>
 </section>
 {% endif %}
