@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ title }}</title>
+<meta name="description" content="{{ description }}">
+<link rel="canonical" href="{{ b.domain }}{{ path }}">
+<meta property="og:type" content="website">
+<meta property="og:title" content="{{ title }}">
+<meta property="og:description" content="{{ description }}">
+<meta property="og:url" content="{{ b.domain }}{{ path }}">
+<meta name="theme-color" content="#003198">
+<meta property="og:image" content="{{ b.domain }}/assets/img/westar-logo.png">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/site.css">
+{% for s in schemas %}<script type="application/ld+json">{{ s|safe }}</script>
+{% endfor %}{% if b.ga4_id %}<script async src="https://www.googletagmanager.com/gtag/js?id={{ b.ga4_id }}"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','{{ b.ga4_id }}');</script>{% endif %}
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+{% if placeholders %}<div class="prelaunch" role="note">Pre-launch preview: placeholder phone and business details. Edit site.json before going live.</div>{% endif %}
+<header class="masthead">
+  <div class="wrap masthead-in">
+    <a class="logo" href="/"><img src="/assets/img/westar-logo.png" alt="{{ b.name }}" width="234" height="92"></a>
+    <nav class="nav" aria-label="Main">
+      <a href="/services/"{% if section=='services' %} aria-current="page"{% endif %}>Services</a>
+      <a href="/service-areas/"{% if section=='areas' %} aria-current="page"{% endif %}>Service areas</a>
+      <a href="/about/"{% if section=='about' %} aria-current="page"{% endif %}>About</a>
+      <a href="/contact/"{% if section=='contact' %} aria-current="page"{% endif %}>Contact</a>
+    </nav>
+    <a class="btn btn-call masthead-call" href="tel:{{ b.phone_e164 }}">Call {{ b.phone_display }}</a>
+  </div>
+</header>
+{% if crumbs %}<nav class="crumbs" aria-label="Breadcrumb"><ol class="wrap">{% for c in crumbs %}<li>{% if not loop.last %}<a href="{{ c[1] }}">{{ c[0] }}</a>{% else %}<span aria-current="page">{{ c[0] }}</span>{% endif %}</li>{% endfor %}</ol></nav>{% endif %}
+<main id="main">
+{% block main %}{% endblock %}
+</main>
+<footer class="foot">
+  <div class="wrap foot-grid">
+    <div>
+      <p class="foot-name">{{ b.name }}</p>
+      <p>Water, fire, mold, and storm damage restoration across California. Answering 24 hours a day, every day.</p>
+      <p><a href="tel:{{ b.phone_e164 }}">{{ b.phone_display }}</a><br><a href="mailto:{{ b.email }}">{{ b.email }}</a></p>
+      {% if b.street %}<p>{{ b.street }}<br>{{ b.city }}, {{ b.region }} {{ b.postal }}</p>{% endif %}
+      {% if b.license %}<p>CA Contractor License #{{ b.license }}</p>{% endif %}
+    </div>
+    <div>
+      <p class="foot-h">Services</p>
+      <ul>{% for s in services %}<li><a href="/services/{{ s.slug }}/">{{ s.name }}</a></li>{% endfor %}</ul>
+    </div>
+    <div>
+      <p class="foot-h">Statewide across California</p>
+      <ul>{% for r, cs in regions %}{% for c in cs[:2] %}<li><a href="/service-areas/{{ c.slug }}/">{{ c.name }}</a></li>{% endfor %}{% endfor %}<li><a href="/service-areas/">All service areas</a></li></ul>
+    </div>
+  </div>
+  <div class="wrap foot-base"><p>&copy; {% if b.founded and b.founded|int < year %}{{ b.founded }}&ndash;{% endif %}{{ year }} {{ b.name }}. <a href="/privacy/">Privacy</a></p></div>
+</footer>
+<a class="callbar" href="tel:{{ b.phone_e164 }}">Call now, 24/7: {{ b.phone_display }}</a>
+<script src="/assets/js/site.js" defer></script>
+</body>
+</html>

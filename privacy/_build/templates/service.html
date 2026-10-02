@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block main %}
+<section class="page-head">
+  <div class="wrap">
+    <h1>{{ h1 }}</h1>
+    <p class="lede">{{ s.summary }}</p>
+    <a class="btn btn-call" href="tel:{{ b.phone_e164 }}">Call {{ b.phone_display }}, 24/7</a>
+  </div>
+</section>
+{% if s.now %}
+<section class="band">
+  <div class="wrap two-col">
+    <h2>Do this now</h2>
+    <ol class="now-list">{% for n in s.now %}<li>{{ n }}</li>{% endfor %}</ol>
+  </div>
+</section>
+{% endif %}
+<section class="band band-mist">
+  <div class="wrap two-col">
+    <h2>What we do</h2>
+    <ol class="process">{% for st in s.steps %}<li><strong>{{ st[0] }}.</strong> {{ st[1] }}</li>{% endfor %}</ol>
+  </div>
+</section>
+{% if city %}
+<section class="band">
+  <div class="wrap two-col">
+    <h2>In {{ city.name }}</h2>
+    <p>{{ city.note }}</p>
+  </div>
+</section>
+{% endif %}
+{% if s.faqs %}
+<section class="band">
+  <div class="wrap two-col">
+    <h2>Questions</h2>
+    <div class="faqs">{% for q in s.faqs %}<details><summary>{{ q[0] }}</summary><p>{{ q[1] }}</p></details>{% endfor %}</div>
+  </div>
+</section>
+{% endif %}
+{% if not city %}
+<section class="band band-mist">
+  <div class="wrap">
+    <h2>{{ s.name }} across California</h2>
+    <div class="regions">{% for r, cs in regions %}<div><h3>{{ r }}</h3><ul class="city-list">{% for c in cs %}<li><a href="/service-areas/{{ c.slug }}/">{{ c.name }}</a></li>{% endfor %}</ul></div>{% endfor %}</div>
+  </div>
+</section>
+{% endif %}
+{% include "lead.html" %}
+{% endblock %}
